@@ -24,6 +24,10 @@ use App\Http\Controllers\Api\OrdersController;
 
 Route::prefix('v1')->group(function() {
 
+    Route::get('/test', function(){
+        return response()->json(['success' => true,'msg' => 'TEST'], 200);
+    });
+
     //Auth.
     Route::controller(AuthController::class)->group(function() {
         Route::post('/login', 'login');
@@ -66,5 +70,5 @@ Route::prefix('v1')->group(function() {
 
 //invalid url..
 Route::fallback(function(){
-    return response()->json(['success' => false,'msg' => 'Page Not Found'], 404);
+    return response()->json(['success' => false,'msg' => 'Root Not Found'], 404);
 });
